@@ -25,11 +25,21 @@
             margin-bottom: 20px;
         }
         #hebrew-date {
-            font-size: 2.5em;
+            font-size: 3em;
             margin-bottom: 10px;
+    font-weight: 700;
         }
+#day-of-month {
+    font-size: 1.2em;
+}
+#month {
+    font-size: 1em;
+}
+#year {
+    font-size: 0.9em;
+}
         #gregorian-date {
-            font-size: 1.2em;
+            font-size: 1.5em;
             opacity: 0.8;
         }
     </style>
@@ -45,6 +55,13 @@
         function removeNikkud(str) {
             return str.replace(/[\u0591-\u05C7]/g, "");
         }
+
+function splitHebrewDate(dateString) {
+    const parts = dateString.split(' ');
+    document.querySelector('#day-of-month').textContent = parts[0];
+    document.querySelector('#month').textContent = parts[1] + ' ' + parts[2];
+    document.querySelector('#year').textContent = parts[3];
+}
 
         function parseDate(title) {
             const parts = title.split(' - ');
