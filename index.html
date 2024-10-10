@@ -88,6 +88,23 @@ function splitHebrewDate(dateString) {
                 console.error('שגיאה בטעינת הנתונים:', error);
                 document.getElementById('hebrew-date').textContent = 'לא ניתן לטעון את התאריך';
             });
+
+function refreshAtMidnight() {
+    var now = new Date();
+    var night = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate() + 1,
+        0, 0, 0
+    );
+    var msToMidnight = night.getTime() - now.getTime();
+
+    setTimeout(function() {
+        location.reload();
+    }, msToMidnight);
+}
+
+refreshAtMidnight();
     </script>
 </body>
 </html>
